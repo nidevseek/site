@@ -1401,7 +1401,7 @@ a {
     padding: 10px;
     padding-left: 15px;
     margin: 0px 0 0 0px;
-    width: 250px;
+    width: 293px;
     height: 200px;
     color: #ffffff
   }
@@ -1420,7 +1420,7 @@ a {
     border: 2px solid rgba(60, 60, 60, 0.101);
     background-color: rgb(11, 11, 11);
     color: #ffffff;
-    width: 221px;
+    width: 260px;
     height: 115px;
 }
 
@@ -1436,7 +1436,7 @@ a {
   padding: 10px;
   padding-left: 15px;
   margin: 15px 0 0 0px;
-  width: 250px;
+  width: 290px;
   height: 393px;
   color: #ffffff;
 }
@@ -1447,7 +1447,7 @@ a {
   background-color: rgb(11, 11, 11);
   border-radius: 10px;
   margin: 10px 0px 10px 0px;
-  width: 240px;
+  width: 277px;
   height: 100px;
   color: #ffffff;
 }
@@ -1869,11 +1869,11 @@ a {
   }
 
   .song_cover {
-    margin: 0 0 0 5px;
+    margin: 0px 0 0 6px;
     width: 60px;
-    height: 78px;
-    border-radius: 5px;
-    margin-right: 6px;
+    height: 60px;
+    border-radius: 9px;
+    margin-right: 13px;
   }
 
   #trackName {
@@ -2180,7 +2180,7 @@ a {
 
  @media (max-width: 360px) {
   #progressContainer {
-    margin: 21px 0 0 0;
+    margin: 21px 0 0 4px;
     width: 290px;
     height: 6px;
   }
@@ -2195,7 +2195,7 @@ a {
  @media (max-width: 340px) {
   #progressContainer {
     width: 255px;
-    height: 7px;
+    height: 6px;
   }
 
   #timeInfo {
