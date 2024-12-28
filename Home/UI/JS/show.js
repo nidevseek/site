@@ -16,4 +16,4 @@ const snowContainer = document.getElementById('snow-container');
         }, 2000);
     }
 
-    setInterval(createSnowflake, 10);
+    setInterval(createSnowflake, 15);
