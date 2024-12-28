@@ -48,7 +48,6 @@ async function getCurrentTrack() {
         document.getElementById("trackName").innerText = trackName;
         document.getElementById("artistName").querySelector("span").innerText = artists.map(artist => artist.name).join(", ");
         document.getElementById("albumCover").src = album.images[0]?.url;
-
         const progressPercent = (data.progress_ms / data.item.duration_ms) * 100;
         document.getElementById("progressBar").style.width = `${progressPercent}%`;
         document.getElementById("currentTime").innerText = formatTime(data.progress_ms);
