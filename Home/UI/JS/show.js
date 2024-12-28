@@ -6,7 +6,7 @@ const snowContainer = document.getElementById('snow-container');
         snowflake.textContent = '❄';
 
         snowflake.style.left = Math.random() * 100 + 'vw';
-        snowflake.style.fontSize = Math.random() * 15 + 5 + 'px'; 
+        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; 
         snowflake.style.animationDuration = Math.random() * 1 + 1 + 's';
         snowflake.style.animationDelay = Math.random() * 1 + 's';
 
@@ -16,4 +16,4 @@ const snowContainer = document.getElementById('snow-container');
         }, 2000);
     }
 
-    setInterval(createSnowflake, 15);
+    setInterval(createSnowflake, 50);
