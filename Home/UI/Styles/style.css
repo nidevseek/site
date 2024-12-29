@@ -1445,7 +1445,7 @@ a {
     margin-top: 5px;
     margin-left: 15px;
     width: 350px;
-    height: 180px;
+    height: 190px;
   }
 
   .song_cover {
@@ -2245,7 +2245,7 @@ a {
 
 @media (max-width: 450px) {
   #progressContainer {
-  margin: 35px 10px 0 20px;
+  margin: 25px 10px 0 20px;
   width: 315px;
 }
 
