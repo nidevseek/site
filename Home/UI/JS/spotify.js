@@ -44,11 +44,16 @@ async function getCurrentTrack() {
 
     const data = await response.json();
     if (data?.item) {
-        const { name: trackName, artists, album } = data.item;
+        const { name: trackName, artists, album, explicit } = data.item;
+
         const releaseYear = new Date(album.release_date).getFullYear();
-        document.getElementById("trackName").innerText = trackName;
+        const explicitIcon = explicit ? `<img src='https://img.icons8.com/?size=100&id=ulh6TDZUXojQ&format=png&color=ffffff' alt='Explicit' style='width:15px; height:15px;'>` : "";
+        const trackDisplayName = `${trackName} ${explicitIcon}`;
+        
+        document.getElementById("trackName").innerHTML = trackDisplayName;
         document.getElementById("artistName").querySelector("span").innerText = `${artists.map(artist => artist.name).join(", ")} • ${releaseYear}`;
         document.getElementById("albumCover").src = album.images[0]?.url;
+
         const progressPercent = (data.progress_ms / data.item.duration_ms) * 100;
         document.getElementById("progressBar").style.width = `${progressPercent}%`;
         document.getElementById("currentTime").innerText = formatTime(data.progress_ms);
