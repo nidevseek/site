@@ -45,8 +45,9 @@ async function getCurrentTrack() {
     const data = await response.json();
     if (data?.item) {
         const { name: trackName, artists, album } = data.item;
+        const releaseYear = new Date(album.release_date).getFullYear();
         document.getElementById("trackName").innerText = trackName;
-        document.getElementById("artistName").querySelector("span").innerText = artists.map(artist => artist.name).join(", ");
+        document.getElementById("artistName").querySelector("span").innerText = `${artists.map(artist => artist.name).join(", ")} • ${releaseYear}`;
         document.getElementById("albumCover").src = album.images[0]?.url;
         const progressPercent = (data.progress_ms / data.item.duration_ms) * 100;
         document.getElementById("progressBar").style.width = `${progressPercent}%`;
