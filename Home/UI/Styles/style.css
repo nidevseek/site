@@ -272,7 +272,7 @@ a {
 
 .button {
     border-radius: 30px;
-    background-color: rgb(9, 9, 9);
+    background-color: rgb(9 9 9 / 21%);
     border: 2px solid rgba(93, 93, 93, 0.101);
     color: #bbb;
     height: 40px;
@@ -285,7 +285,7 @@ a {
 
 .button2 {
   border-radius: 30px;
-  background-color: rgb(9, 9, 9);
+  background-color: rgb(9 9 9 / 21%);
   border: 2px solid rgba(73, 73, 73, 0.101);
   color: #bbb;
   height: 40px;
@@ -429,6 +429,7 @@ a {
   background-color: #5f5f5f;
   height: 100%;
   width: 0;
+  border-radius: 0 15px 15px 0;
 }
 
 #timeInfo {
