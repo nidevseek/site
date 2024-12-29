@@ -63,7 +63,7 @@ async function getCurrentTrack() {
             return `${namePart} • ${yearPart}`;
         };
 
-        const artistDisplayInfoTruncated = truncateText(fullArtistInfo, 40);
+        const artistDisplayInfoTruncated = truncateText(fullArtistInfo, 37);
         const progressPercent = (data.progress_ms / data.item.duration_ms) * 100;
 
         document.getElementById("trackName").innerHTML = trackDisplayName;
