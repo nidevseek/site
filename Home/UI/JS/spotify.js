@@ -45,16 +45,30 @@ async function getCurrentTrack() {
     const data = await response.json();
     if (data?.item) {
         const { name: trackName, artists, album, explicit } = data.item;
-
         const releaseYear = new Date(album.release_date).getFullYear();
         const explicitIcon = explicit ? `<img src='https://img.icons8.com/?size=100&id=ulh6TDZUXojQ&format=png&color=ffffff' alt='Explicit' style='width:15px; height:15px;'>` : "";
         const trackDisplayName = `${trackName} ${explicitIcon}`;
-        
-        document.getElementById("trackName").innerHTML = trackDisplayName;
-        document.getElementById("artistName").querySelector("span").innerText = `${artists.map(artist => artist.name).join(", ")} • ${releaseYear}`;
-        document.getElementById("albumCover").src = album.images[0]?.url;
+        const artistNames = artists.map(artist => artist.name).join(", ");
+        const fullArtistInfo = `${artistNames} • ${releaseYear}`;
 
+        const truncateText = (text, maxLength) => {
+            const parts = text.split(" • ");
+            let namePart = parts[0]; 
+            const yearPart = parts[1];
+
+            if (namePart.length > maxLength) {
+                namePart = namePart.substring(0, maxLength) + "";
+            }
+
+            return `${namePart} • ${yearPart}`;
+        };
+
+        const artistDisplayInfoTruncated = truncateText(fullArtistInfo, 40);
         const progressPercent = (data.progress_ms / data.item.duration_ms) * 100;
+
+        document.getElementById("trackName").innerHTML = trackDisplayName;
+        document.getElementById("artistName").querySelector("span").innerText = artistDisplayInfoTruncated;
+        document.getElementById("albumCover").src = album.images[0]?.url;
         document.getElementById("progressBar").style.width = `${progressPercent}%`;
         document.getElementById("currentTime").innerText = formatTime(data.progress_ms);
         document.getElementById("totalTime").innerText = formatTime(data.item.duration_ms);
