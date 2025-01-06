@@ -123,8 +123,8 @@ td {
 }
 
 .icon_stars {
-  height: 20px;
-  width: 25px;
+  height: 25px;
+  width: 33px;
 }
 
 body {
@@ -438,12 +438,13 @@ a {
   }
 
   .description_info {
+    margin-right: 10px;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #d5d5d5;
     font-size: 16px;
-   margin-left: 15px;
+    margin-left: 10px;
 }
 
 .button1 {
@@ -457,9 +458,9 @@ a {
   text-align: center;
   display: flex;
   margin-top: 20px;
-  justify-content: space-evenly;
-  align-items: center;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
 }
 
@@ -477,10 +478,10 @@ a {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-    display: flex;
-    font-size: 15px;
-    margin-top: 10px;
-    width: 100%;
+  display: flex;
+  font-size: 15px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .block_spotify {
@@ -494,7 +495,7 @@ a {
   padding: 10px;
   margin: 20px 0 0 15px;
   width: 700px;
-  height: 175px;
+  height: 176px;
   color: #ffffff;
 }
 
@@ -542,7 +543,7 @@ a {
   background-color: #333;
   border-radius: 4px;
   overflow: hidden;
-  width: 600px;
+  width: 650px;
   height: 8px;
   position: relative;
 }
@@ -1348,10 +1349,10 @@ a {
     background-color: rgb(11, 11, 11);
     border-radius: 12px;
     padding: 10px;
-    padding-left: 15px;
+    padding-left: 5px;
     margin: 0px 0 0 15px;
-    width: 349px;
-    height: 206px;
+    width: 369px;
+    height: 215px;
     color: #ffffff
   }
 
@@ -1361,7 +1362,7 @@ a {
     border-radius: 12px;
     padding: 10px;
     padding-left: 15px;
-    margin: 8px 0 0 0;
+    margin: 10px 0 0 10px;
     display: inline-block;
     flex-direction: column;
     align-items: flex-start;
@@ -1369,7 +1370,7 @@ a {
     border: 2px solid rgba(60, 60, 60, 0.101);
     background-color: rgb(11, 11, 11);
     color: #ffffff;
-    width: 317px;
+    width: 323px;
     height: 125px;
 }
 
@@ -1385,7 +1386,7 @@ a {
   padding: 10px;
   padding-left: 15px;
   margin: 15px 0 0 15px;
-  width: 350px;
+  width: 360px;
   height: 405px;
   color: #ffffff;
 }
@@ -1396,8 +1397,8 @@ a {
   background-color: rgb(11, 11, 11);
   border-radius: 10px;
   margin: 10px 10px 10px 10px;
-  width: 325px;
-  height: 100px;
+  width: 335px;
+  height: 95px;
   color: #ffffff;
 }
 
@@ -1419,7 +1420,7 @@ a {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 14px;
+  font-size: 13px;
 }
 
   .Block {
@@ -1433,8 +1434,8 @@ a {
   }
 
   .Block_info {
-    width: 380px;
-    height: 500px;
+    width: 384px;
+    height: 533px;
     margin: 10px 5px;
     padding: 5px;
   }
@@ -1445,8 +1446,8 @@ a {
   }
 
   .text_name, .text_name_info, #current_time, #current_date, #current_weather, #text_hover, #text_date, #text_utc, #text_deheree {
-    font-size: 12px;
-    padding: 5px;
+    font-size: 13px;
+    padding: 10px;
   }
   
   .avatar_info img {
@@ -1463,6 +1464,7 @@ a {
   }
   
 .buttons1 {
+    display: ruby;
     gap: 10px;
     width: 100%;
   }
@@ -1478,9 +1480,9 @@ a {
   }
 
   .block_spotify {
-    margin-top: 5px;
-    margin-left: 15px;
-    width: 350px;
+    margin-top: 12px;
+    margin-left: 5px;
+    width: 375px;
     height: 190px;
   }
 
@@ -1523,10 +1525,10 @@ a {
     border: 2px solid rgba(60, 60, 60, 0.101);
     background-color: rgb(11, 11, 11);
     border-radius: 12px;
-    padding: 10px;
+    padding: 13px;
     padding-left: 15px;
     margin: 0px 0 0 0px;
-    width: 293px;
+    width: 311px;
     height: 200px;
     color: #ffffff
   }
@@ -1545,8 +1547,8 @@ a {
     border: 2px solid rgba(60, 60, 60, 0.101);
     background-color: rgb(11, 11, 11);
     color: #ffffff;
-    width: 260px;
-    height: 115px;
+    width: 287px;
+    height: 95px;
 }
 
 .Block_skill {
@@ -1561,8 +1563,8 @@ a {
   padding: 10px;
   padding-left: 15px;
   margin: 15px 0 0 0px;
-  width: 290px;
-  height: 393px;
+  width: 315px;
+  height: 410px;
   color: #ffffff;
 }
 
@@ -1572,7 +1574,7 @@ a {
   background-color: rgb(11, 11, 11);
   border-radius: 10px;
   margin: 10px 0px 10px 0px;
-  width: 277px;
+  width: 306px;
   height: 100px;
   color: #ffffff;
 }
@@ -1595,7 +1597,7 @@ a {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .text_skill {
@@ -1615,8 +1617,8 @@ a {
 .icon_skill_info {
   width: 20px !important;
   height: 20px !important;
-  margin-right: 8px;
-  margin-top: 8px;
+  margin-right: 12px;
+  margin-top: 0px;
   filter: grayscale(100%);
 }
 
@@ -1643,7 +1645,7 @@ a {
 
   .Block_info {
     width: 320px;
-    height: 450px;
+    height: 479px;
     margin: 10px 5px;
     padding: 5px;
   }
@@ -1654,7 +1656,7 @@ a {
   }
 
   .text_name, .text_name_info, #current_time, #current_date, #current_weather, #text_hover, #text_date, #text_utc, #text_deheree {
-    font-size: 10px;
+    font-size: 12px;
     padding: 5px;
   }
   
@@ -1688,7 +1690,7 @@ a {
   }
 
   .block_spotify {
-    width: 290px;
+    width: 310px;
     height: 180px;
   }
 
@@ -1721,10 +1723,10 @@ a {
   }
 
   .Block_info {
-    width: 302px;
-    height: 374px;
+    width: 295px;
+    height: 499px;
     margin: 10px 5px;
-    padding: 5px;
+    padding: 12px;
   }
 
   .description_info {
@@ -1758,15 +1760,15 @@ a {
   }
   
   .button1 {
-    font-size: 13px;
+    font-size: 14px;
     margin: 10px 0;
-    width: 400px;
-    height: 30px;
+    width: 295px;
+    height: 42px;
   }
 
   .icon_info, .icon_info1 {
-    width: 15px !important;
-    height: 15px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .block_spotify {
@@ -2155,7 +2157,7 @@ a {
 
   .Block_info {
     width: 255px;
-    height: 271px;
+    height: 377px;
     padding: 5px;
   }
 
@@ -2196,15 +2198,16 @@ a {
   }
   
   .button1 {
-    font-size: 9px;
-    margin: 1px;
-    width: 300px;
-    height: 20px;
+    margin-top: 12px;
+    font-size: 13px;
+    /* margin: 5px; */
+    width: 242px;
+    height: 30px;
   }
 
   .icon_info, .icon_info1 {
-    width: 10px !important;
-    height: 10px !important;
+    width: 23px !important;
+    height: 16px !important;
   }
 
   .block_spotify {
@@ -2280,8 +2283,8 @@ a {
 
 @media (max-width: 450px) {
   #progressContainer {
-  margin: 25px 10px 0 20px;
-  width: 315px;
+  margin: 35px 10px 0 20px;
+  width: 331px;
 }
 
 #timeInfo {
@@ -2295,7 +2298,7 @@ a {
 @media (max-width: 380px) {
   #progressContainer {
     margin: 16px 10px 0 20px;
-    width: 250px;
+    width: 280px;
   }
   #timeInfo {
     margin-left: 27px;
