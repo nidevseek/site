@@ -19,6 +19,7 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+
   <title>nidenseek_ portfolio</title>
 </head>
 <body>
@@ -27,7 +28,10 @@
       <div id="giftOverlay" class="overlay hidden">
         <div class="overlay-content">
           <button onclick="toggleGiftOverlay()"><img class="icon_close" src="https://img.icons8.com/?size=100&id=8112&format=png&color=ffffff"></button>
-          <img class="gift_img" src="Home/Img/gift_xaromie.png">
+          <video class="gift_video" autoplay muted loop>
+            <source src="Home/Video/gift.mp4" type="video/mp4">
+            Недоступно
+          </video>
           <div class="overlay_text">Received Gift</div>
           <div class="overlay_description">You can keep this gift in Profile of convert it to 21 Stars</div>
           <table>
@@ -37,7 +41,7 @@
             </tr>
             <tr>
               <th>Value</th>
-              <td><img src="Home/Img/stars.png" class="icon_table"> 25</td>
+              <td><img src="Home/Img/stars.png" class="icon_table">25</td>
             </tr>
             <tr>
               <th>Date</th>
@@ -114,7 +118,7 @@
               Discord
             </div>
             <div class="button1" onclick="toggleGiftOverlay()">
-              <img class="icon_stars" src="Home/Img/stars.png" alt="stars"/>
+              <img class="icon_stars" src="Home/Img/stars.png" alt="gifts"/>
               Gift
           </div>
           </div>
@@ -142,17 +146,15 @@
       </div>
 
       <div class="right">
-            <div class="Block_projects">
-        <a href="https://nidevseek.github.io/projects/">
-            <div class="text_name_info">☁ about.md</div>
-            <div class="Block_projects_info">
-                <div class="text_projects_info">▤ View projects</div>
-                <div class="description_projects_info">
-                    All my projects are here, including personal and sites made to order.
-                </div>
+        <div class="Block_projects">
+          <div class="text_name_info">☁ about.md</div>
+          <div class="Block_projects_info">
+            <div class="text_projects_info">▤ View projects</div>
+            <div class="description_projects_info">
+              !!feature in development!! All my projects are here, including personal and sites made to order.
             </div>
-        </a>
-    </div>
+          </div>
+        </div>
 
         <div class="Block_skill">
           <div class="text_name_info">⊟ skills.md</div>
