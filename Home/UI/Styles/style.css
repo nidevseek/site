@@ -1306,7 +1306,7 @@ a {
     margin-top: 5px;
     margin-left: 15px;
     width: 475px;
-    height: 200px;
+    height: 180px;
   }
 
   .song_cover {
@@ -1774,7 +1774,7 @@ a {
   .block_spotify {
     margin: 5px 0 0 2px;
     width: 295px;
-    height: 131px;
+    height: 150px;
   }
 
   .song_cover {
@@ -2213,7 +2213,7 @@ a {
   .block_spotify {
     margin: 5px 0 0 0px;
     width: 250px;
-    height: 137px;
+    height: 155px;
   }
 
   .song_cover {
@@ -2236,8 +2236,8 @@ a {
 
 @media (max-width: 992px) {
   #progressContainer {
-    margin: 25px 10px 0 20px;
-    width: 620px;
+    margin: 17px 10px 0 20px;
+    width: 659px;
   }
  }
 @media (max-width: 768px) {
@@ -2283,8 +2283,8 @@ a {
 
 @media (max-width: 450px) {
   #progressContainer {
-  margin: 35px 10px 0 20px;
-  width: 331px;
+  margin: 27px 10px 0 20px;
+  width: 285px;
 }
 
 #timeInfo {
