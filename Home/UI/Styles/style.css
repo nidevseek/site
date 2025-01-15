@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  background-color: rgba(28, 28, 28, 0.678);
+  background-color: rgba(88, 88, 88, 0.678);
   transition: opacity 0.3s ease;
 }
 
@@ -1723,7 +1723,7 @@ a {
 
   .Block_info {
     width: 295px;
-    height: 499px;
+    height: 440px;
     margin: 10px 5px;
     padding: 12px;
   }
@@ -1745,7 +1745,6 @@ a {
   }
 
   #text_hi {
-    /* margin-bottom: 0px; */
     font-size: 18px;
   }
 
@@ -1761,7 +1760,6 @@ a {
   .button1 {
     font-size: 14px;
     margin: 10px 0;
-    width: 295px;
     height: 42px;
   }
 
@@ -1937,7 +1935,7 @@ a {
 
   .Block_info {
     width: 270px;
-    height: 345px;
+    height: 570px;
     padding: 5px;
   }
 
@@ -1951,6 +1949,7 @@ a {
     font-weight: 400;
     word-wrap: break-word;
     font-size: 11px;
+    margin-bottom: 20px;
   }
 
   .text_name, .text_name_info, #current_time, #current_date, #current_weather, #text_hover, #text_date, #text_utc, #text_deheree {
@@ -1977,10 +1976,11 @@ a {
   }
   
   .button1 {
-    font-size: 10px;
-    margin: 1px;
-    width: 300px;
-    height: 30px;
+    font-size: 14px;
+    margin: 10px 0;
+    height: 42px;
+    width: 90%;
+    margin-left: 10px;
   }
 
   .icon_info, .icon_info1 {
@@ -2156,7 +2156,7 @@ a {
 
   .Block_info {
     width: 255px;
-    height: 377px;
+    height: 510px;
     padding: 5px;
   }
 
@@ -2197,10 +2197,10 @@ a {
   }
   
   .button1 {
-    margin-top: 12px;
-    font-size: 13px;
-    width: 242px;
-    height: 30px;
+    font-size: 14px;
+    margin: 10px 0;
+    height: 42px;
+    margin-left: 10px;
   }
 
   .icon_info, .icon_info1 {
