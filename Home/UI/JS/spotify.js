@@ -5,24 +5,29 @@ const CLIENT_ID = "8282ae5ea7fb4a038a271b716cf7d076";
 const CLIENT_SECRET = "b6e2ec9c8f5e40ddaa5e3675e0125f4d";
 
 async function refreshAccessToken() {
+    const credentials = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+
     const response = await fetch("https://accounts.spotify.com/api/token", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": `Basic ${credentials}`
+        },
         body: new URLSearchParams({
             grant_type: "refresh_token",
-            refresh_token: REFRESH_TOKEN,
-            client_id: CLIENT_ID,
-            client_secret: CLIENT_SECRET,
+            refresh_token: REFRESH_TOKEN
         }),
     });
 
     const data = await response.json();
     if (data.access_token) {
         ACCESS_TOKEN = data.access_token;
+        console.log("Access token refreshed:", ACCESS_TOKEN);
     } else {
         console.error("Failed to refresh access token:", data);
     }
 }
+
 
 async function getCurrentTrack() {
     const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
