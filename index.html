@@ -69,11 +69,21 @@
           <div id="text_date">loading...</div>
         </div>
 
-        <div class="Block2">
+        <div class="Block2" onclick="openModal()">
           <div class="text_name">▤ weather.json</div>
           <div id="current_weather">loading...</div>
           <div id="text_deheree">loading...</div>
         </div>
+        
+        <div id="weatherModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>weather forecast</h2>
+            <div id="forecast">
+            </div>
+          </div>
+        </div>
+        
 
         <div class="Block_info">
           <div class="text_name_info">&#9776; about.md</div>
@@ -199,6 +209,5 @@
 </div>
   <script src="Home/UI/JS/script.js"></script>
   <script src="Home/UI/JS/spotify.js"></script>
-  <script src="Home/UI/JS/show.js"></script>
 </body>
 </html>
