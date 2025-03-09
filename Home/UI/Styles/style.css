@@ -724,10 +724,10 @@ a {
   padding-left: 60px;
   white-space: nowrap;
   width: 5px;
-  height: 20px;
+  height: 14px;
   font-family: "Fira Code", monospace;
   font-weight: 100;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   color: #3edc26;
 }
@@ -2088,7 +2088,7 @@ a {
 .Block_skills {
   display: inline-block;
   border: 2px solid rgba(60, 60, 60, 0.101);
-  background-color: rgb(11, 11, 11);
+  background-color: rgb(11 11 11 / 0%);
   border-radius: 10px;
   margin: 10px 0px 10px 0px;
   width: 240px;
@@ -2140,15 +2140,44 @@ a {
 }
 
 .text_skill_processing {
-  padding-left: 37px;
+  padding-left: 51px;
   white-space: nowrap;
   width: 7px;
-  height: 12px;
+  height: 15px;
   font-family: "Fira Code", monospace;
   font-weight: 100;
-  font-size: 11px;
+  font-size: 13px;
   font-style: normal;
   color: #26dcca;
+}
+
+#skill_processing {
+  width: 7px;
+  height: 7px;
+  background-color: #26dcca;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin: 24px 0 0 30px;
+  text-align: center;
+  box-shadow: 0 0 50px 4px #26dcca, 0 0 50px 10px #26dccac7, 0 0 50px #26dcca, 0 0 900px 15px #00ffe68c;
+}
+#skill_active {
+  width: 7px;
+  height: 7px;
+  background-color: #3edc26;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin: 23px 0 0 30px;
+  text-align: center;
+  box-shadow: 0px 0px 50px 0px #5bff43, 0 0 50px 4px #22ff00, 0 0 50px #22ff0000, 0 0 90px 11px #3edc26;
 }
 
   .Block {
