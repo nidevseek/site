@@ -717,7 +717,7 @@ a {
   font-size: 18px;
   margin: 39px 0 0 30px;
   text-align: center;
-  box-shadow: 0px 0px 20px 1px #5bff43, 0 0 20px 4px #22ff004f, 0 0 30px #22ff0000, 0 0 40px 11px #3edc26;
+  box-shadow: 0px 0px 50px 0px #5bff43, 0 0 50px 4px #22ff00, 0 0 50px #22ff0000, 0 0 90px 11px #3edc26;
 }
 
 .text_skill_avtive {
@@ -745,7 +745,7 @@ a {
   font-size: 18px;
   margin: 40px 0 0 30px;
   text-align: center;
-  box-shadow: 0 0 20px 4px #26dcca00, 0 0 20px 10px #26dccac7, 0 0 30px #26dcca, 0 0 40px 15px #00ffe68c;
+  box-shadow: 0 0 50px 4px #26dcca, 0 0 50px 10px #26dccac7, 0 0 50px #26dcca, 0 0 900px 15px #00ffe68c;
 }
 
 .text_skill_processing {
