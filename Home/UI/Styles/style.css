@@ -14,6 +14,14 @@
   color: #ffffff;
 }
 
+html {
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -223,7 +231,6 @@ a {
   }
 
   .text_name_info {
-    margin-top: 10px;
     gap: 1rem;
     padding-top: 10rem;
     font-size: 15px;
@@ -494,7 +501,7 @@ a {
   padding: 10px;
   margin: 20px 0 0 15px;
   width: 700px;
-  height: 176px;
+  height: 175px;
   color: #ffffff;
 }
 
@@ -576,9 +583,9 @@ a {
   padding: 10px;
   padding-left: 15px;
   margin: 20px 0 0 0;
-  width: 640px;
+  width: 555px;
   height: 250px;
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 .Block_projects:hover {
@@ -599,7 +606,7 @@ a {
   border: 2px solid rgba(60, 60, 60, 0.101);
   background-color: rgb(11, 11, 11);
   color: #ffffff;
-  width: 610px;
+  width: 520px;
   height: 120px;
 }
 
@@ -643,9 +650,9 @@ a {
   padding: 10px;
   padding-left: 15px;
   margin: 20px 0 0 0;
-  width: 640px;
+  width: 555px;
   height: 470px;
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 .Block_skill:hover {
@@ -671,9 +678,9 @@ a {
   background-color: rgb(11, 11, 11);
   border-radius: 10px;
   margin: 10px 10px 10px 10px;
-  width: 620px;
-  height: 110px;
-  color: #ffffff; 
+  width: 530px;
+  height: 115px;
+  color: #ffffff;
 }
 
 .icon_skill_info {
@@ -1524,11 +1531,11 @@ a {
     border: 2px solid rgba(60, 60, 60, 0.101);
     background-color: rgb(11, 11, 11);
     border-radius: 12px;
-    padding: 13px;
+    padding: 10px;
     padding-left: 15px;
     margin: 0px 0 0 0px;
-    width: 311px;
-    height: 200px;
+    width: 300px;
+    height: 180px;
     color: #ffffff
   }
 
@@ -1546,7 +1553,7 @@ a {
     border: 2px solid rgba(60, 60, 60, 0.101);
     background-color: rgb(11, 11, 11);
     color: #ffffff;
-    width: 287px;
+    width: 270px;
     height: 95px;
 }
 
@@ -1562,7 +1569,7 @@ a {
   padding: 10px;
   padding-left: 15px;
   margin: 15px 0 0 0px;
-  width: 315px;
+  width: 300px;
   height: 410px;
   color: #ffffff;
 }
@@ -1573,7 +1580,7 @@ a {
   background-color: rgb(11, 11, 11);
   border-radius: 10px;
   margin: 10px 0px 10px 0px;
-  width: 306px;
+  width: 290px;
   height: 100px;
   color: #ffffff;
 }
@@ -1770,7 +1777,7 @@ a {
 
   .block_spotify {
     margin: 5px 0 0 2px;
-    width: 295px;
+    width: 303px;
     height: 150px;
   }
 
@@ -1817,7 +1824,7 @@ a {
     padding: 10px;
     padding-left: 15px;
     margin: 0px 0 0 0px;
-    width: 250px;
+    width: 200px;
     height: 200px;
     color: #ffffff
   }
