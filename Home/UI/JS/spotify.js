@@ -1,5 +1,5 @@
-let ACCESS_TOKEN = "BQD5x8i5CjklgSRPDacYP1RQuDjSw91fRkX3HQUZTz6NAWkXpFchdi9YBBTBmYn1_cdqr1SKA_k6ex-svTBhU2Q7b-NWAw6lhyyBMyIgMmmFYsPt-IIZr4TmcX172_wW8p9z31tLD1v7mOhaFJ5a2YhJoRveNnY115D5IfqLfRqfn2TLg2gbdN02-KLAPhOTp67B3tOxsDFjZT-pqjf1mQGQZTu0Guh4T5sGYYhbgQ";
-let REFRESH_TOKEN = "AQDWiQUO3ETAYI54L88OY6NviUut87-l7Gb0wbrWiQDjLT9pNHOZc8nSh3av3-Pn6RwEtbCA6B8IvYWrABk8B3J4IaiSo2CMM1GWJhwxa7KqLuS-AxxI2qlpqIeVHKeKGQI";
+let ACCESS_TOKEN = "BQD86RRC706eaiQxy0OMcHfnTFkvxqcUh6JOuca0nI9Bxw5DVPjrfvL8naMsVPRmcRTmZl3sgHt13jsQ0Yr6c2j6OjX3kUpLRtxzhwkl5LMFbXYcLYnqafhQkV7qQYRNkDG-z1tXwOrvTyNSOMwhH1qCmaNnMeeH_IFqNv0uTU34nyrtU8xggcgVZuNFDHL-FB7kDAdGs_DbP-Hae1Mao5VvbHvMmEUqk8u6-VLXgIJIQOZQag";
+let REFRESH_TOKEN = "AQD4OZkkJxNW6eadOQttV4esFYMd2yC2Gw9y2IYKeiTR7rgz0wW6bT88Q3RBefCe0WQaC3GWFCGe9-woIi4y8hkqT8sMvg2uJjziuy0OWW9WVn4u7owZZGX_7zI8MjECJvg";
 
 const CLIENT_ID = "8282ae5ea7fb4a038a271b716cf7d076";
 const CLIENT_SECRET = "b6e2ec9c8f5e40ddaa5e3675e0125f4d";
@@ -22,7 +22,6 @@ async function refreshAccessToken() {
     const data = await response.json();
     if (data.access_token) {
         ACCESS_TOKEN = data.access_token;
-        console.log("Access token refreshed:", ACCESS_TOKEN);
     } else {
         console.error("Failed to refresh access token:", data);
     }
