@@ -5,7 +5,7 @@ function calculateAge(birthDate) {
     return ageInYears.toFixed(1);
   }
   
-  const birthDate = new Date(2008, 6, 19);
+  const birthDate = new Date(2008, 7, 19);
   const ageElement = document.querySelector('.age');
   ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
   
