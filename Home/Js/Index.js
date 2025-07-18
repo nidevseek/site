@@ -25,11 +25,13 @@ if (isBirthday) {
   birthdayMessage.style.fontSize = '24px';
   birthdayMessage.style.fontWeight = 'bold';
   birthdayMessage.style.zIndex = '9999';
-  birthdayMessage.style.animation = 'fade-in 1s ease';
+  birthdayMessage.style.color = '#fff';
+  birthdayMessage.style.animation = 'pulse 2s infinite ease-in-out';
   document.body.appendChild(birthdayMessage);
 
   launchConfetti();
 }
+
 
 ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
 
@@ -69,32 +71,38 @@ avatar.addEventListener('click', () => {
 function launchConfetti() {
   const confettiContainer = document.createElement('div');
   confettiContainer.className = 'confetti';
+  confettiContainer.style.position = 'fixed';
+  confettiContainer.style.top = '0';
+  confettiContainer.style.left = '0';
+  confettiContainer.style.width = '100%';
+  confettiContainer.style.height = '100%';
+  confettiContainer.style.pointerEvents = 'none';
+  confettiContainer.style.zIndex = '9998';
   document.body.appendChild(confettiContainer);
 
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 150; i++) {
     const confetti = document.createElement('div');
     confetti.style.position = 'absolute';
     confetti.style.width = '8px';
     confetti.style.height = '8px';
     confetti.style.background = getRandomColor();
-    confetti.style.top = `${Math.random() * window.innerHeight}px`;
-    confetti.style.left = `${Math.random() * window.innerWidth}px`;
+    confetti.style.top = `-10px`;
+    confetti.style.left = `${Math.random() * 100}%`;
     confetti.style.opacity = 1;
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
     confetti.style.borderRadius = '2px';
+    confetti.style.animation = `confetti-fall 4s ease-out forwards`;
+    confetti.style.animationDelay = `${Math.random() * 2}s`;
     confettiContainer.appendChild(confetti);
-
-    setTimeout(() => {
-      confetti.style.transition = 'transform 4.5s ease, opacity 4.5s ease';
-      confetti.style.transform += ` translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`;
-      confetti.style.opacity = 0;
-    }, 50);
   }
 
   setTimeout(() => {
     confettiContainer.remove();
   }, 5000);
 }
+
+launchConfetti();
+setInterval(launchConfetti, 10000);
+
 
 function getRandomColor() {
   const colors = ['#ff2c9c', '#ff6f61', '#ffaa00', '#3cffa7', '#2cfaff', '#fffb3c', '#ffffff'];
