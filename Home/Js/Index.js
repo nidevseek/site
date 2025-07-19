@@ -29,9 +29,12 @@ if (isBirthday) {
   birthdayMessage.style.animation = 'pulse 2s infinite ease-in-out';
   document.body.appendChild(birthdayMessage);
 
-  launchConfetti();
-}
+  launchConfetti(true);
 
+  setInterval(() => {
+    launchConfetti(true);
+  }, 10000);
+}
 
 ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
 
@@ -46,7 +49,6 @@ counterEl.style.opacity = '0';
 
 avatar.addEventListener('click', () => {
   clickCount++;
-
   counterEl.style.transition = 'opacity 0.5s ease';
   counterEl.style.opacity = '1';
   counterEl.textContent = `${clickCount} / 10`;
@@ -68,43 +70,55 @@ avatar.addEventListener('click', () => {
   }, 5000);
 });
 
-function launchConfetti() {
+function launchConfetti(fromTop = false) {
   const confettiContainer = document.createElement('div');
   confettiContainer.className = 'confetti';
-  confettiContainer.style.position = 'fixed';
-  confettiContainer.style.top = '0';
-  confettiContainer.style.left = '0';
-  confettiContainer.style.width = '100%';
-  confettiContainer.style.height = '100%';
-  confettiContainer.style.pointerEvents = 'none';
-  confettiContainer.style.zIndex = '9998';
   document.body.appendChild(confettiContainer);
 
   for (let i = 0; i < 150; i++) {
     const confetti = document.createElement('div');
+    const size = Math.random() * 8 + 4;
+    const shape = Math.random() > 0.5 ? 'circle' : 'stripe';
+
     confetti.style.position = 'absolute';
-    confetti.style.width = '8px';
-    confetti.style.height = '8px';
-    confetti.style.background = getRandomColor();
-    confetti.style.top = `-10px`;
-    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.width = shape === 'circle' ? `${size}px` : `${size * 2}px`;
+    confetti.style.height = shape === 'circle' ? `${size}px` : `${size / 2}px`;
+    confetti.style.backgroundColor = getRandomColor();
     confetti.style.opacity = 1;
-    confetti.style.borderRadius = '2px';
-    confetti.style.animation = `confetti-fall 4s ease-out forwards`;
-    confetti.style.animationDelay = `${Math.random() * 2}s`;
+    confetti.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+
+    if (fromTop) {
+      confetti.style.top = `-10px`;
+      confetti.style.left = `${Math.random() * window.innerWidth}px`;
+    } else {
+      confetti.style.top = `${Math.random() * window.innerHeight}px`;
+      confetti.style.left = `${Math.random() * window.innerWidth}px`;
+    }
+
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
     confettiContainer.appendChild(confetti);
+
+    const duration = 3000 + Math.random() * 2500;
+    const rotate = 360 + Math.random() * 720;
+    const xDrift = (Math.random() - 0.5) * 200;
+
+    setTimeout(() => {
+      confetti.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+      confetti.style.transform += ` translate(${xDrift}px, ${window.innerHeight + 100}px) rotate(${rotate}deg)`;
+      confetti.style.opacity = 0;
+    }, 50);
   }
 
   setTimeout(() => {
     confettiContainer.remove();
-  }, 5000);
+  }, 6000);
 }
 
-launchConfetti();
-setInterval(launchConfetti, 10000);
-
-
 function getRandomColor() {
-  const colors = ['#ff2c9c', '#ff6f61', '#ffaa00', '#3cffa7', '#2cfaff', '#fffb3c', '#ffffff'];
+  const colors = [
+    '#ff2c9c', '#ff6f61', '#ffaa00', '#3cffa7', '#2cfaff', '#fffb3c', '#ffffff',
+    '#00c3ff', '#8aff00', '#ff3c3c', '#b300ff', '#ff8ecb', '#00ffd0', '#ffb347',
+    '#c1ff72', '#72b2ff', '#ff6767', '#ffe066', '#fdff8f', '#e3e3e3'
+  ];
   return colors[Math.floor(Math.random() * colors.length)];
 }
