@@ -36,7 +36,43 @@ if (isBirthday) {
   }, 10000);
 }
 
-ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
+function calculateAge(birthDate) {
+  const now = new Date();
+  const diff = now - birthDate;
+  const ageInYears = diff / (1000 * 60 * 60 * 24 * 365.2425);
+  return Math.floor(ageInYears);
+}
+
+let showingTime = false;
+
+function updateAgeText() {
+  ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
+}
+
+function updateTimeText() {
+  const now = new Date();
+  const mskTime = new Date(now.getTime() + 3*60*60*1000);
+  let hours = mskTime.getUTCHours();
+  const minutes = String(mskTime.getUTCMinutes()).padStart(2, '0');
+  const seconds = String(mskTime.getUTCSeconds()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12 || 12;
+  ageElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+}
+
+updateAgeText();
+
+ageElement.addEventListener('click', () => {
+  showingTime = !showingTime;
+  if (showingTime) {
+    updateTimeText();
+    ageElement.timeInterval = setInterval(updateTimeText, 1000);
+  } else {
+    clearInterval(ageElement.timeInterval);
+    updateAgeText();
+  }
+});
+
 
 let clickCount = 0;
 let hideTimeout;
