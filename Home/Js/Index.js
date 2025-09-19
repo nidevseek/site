@@ -36,18 +36,13 @@ if (isBirthday) {
   }, 10000);
 }
 
-function calculateAge(birthDate) {
-  const now = new Date();
-  const diff = now - birthDate;
-  const ageInYears = diff / (1000 * 60 * 60 * 24 * 365.2425);
-  return Math.floor(ageInYears);
-}
-
 let showingTime = false;
 
 function updateAgeText() {
   ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
 }
+
+updateAgeText();
 
 function updateTimeText() {
   const now = new Date();
@@ -72,7 +67,6 @@ ageElement.addEventListener('click', () => {
     updateAgeText();
   }
 });
-
 
 let clickCount = 0;
 let hideTimeout;
