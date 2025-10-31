@@ -150,15 +150,62 @@ body {
     margin: 0;
   }
 
-  @keyframes fade-in-out {
-    0% { opacity: 0; transform: translateY(-20px); }
-    10% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-20px); }
+  .tape-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    z-index: 99999;
+    overflow: hidden;
   }
   
-  @keyframes confetti-fall {
-    0% { transform: translateY(0) rotate(0); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  .tape {
+    position: absolute;
+    width: 150%;
+    left: -25%;
+    padding: 15px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: white;
+    border-top: 2px solid rgba(0,0,0,0.3);
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background: repeating-linear-gradient(
+      -45deg,
+      #ffdd00 0 20px,
+      #000000 20px 40px
+    );
+    overflow: hidden;
+    transform-origin: center;
+    pointer-events: all;
+    user-select: none;
+    cursor: pointer;
   }
+  
+
+  .tape:nth-child(1) { top: 0%; transform: rotate(-12deg);}
+  .tape:nth-child(2) { top: 5%; transform: rotate(8deg);}
+  .tape:nth-child(3) { top: 10%; transform: rotate(-6deg);}
+  .tape:nth-child(4) { top: 15%; transform: rotate(10deg);}
+  .tape:nth-child(5) { top: 20%; transform: rotate(-8deg);}
+  .tape:nth-child(6) { top: 25%; transform: rotate(6deg);}
+  .tape:nth-child(7) { top: 30%; transform: rotate(-5deg);}
+  .tape:nth-child(8) { top: 35%; transform: rotate(7deg);}
+  .tape:nth-child(9) { top: 40%; transform: rotate(-9deg);}
+  .tape:nth-child(10){ top: 45%; transform: rotate(10deg);}
+  .tape:nth-child(11){ top: 50%; transform: rotate(-7deg);}
+  .tape:nth-child(12){ top: 55%; transform: rotate(5deg);}
+  .tape:nth-child(13){ top: 60%; transform: rotate(-10deg);}
+  .tape:nth-child(14){ top: 65%; transform: rotate(8deg);}
+  .tape:nth-child(15){ top: 70%; transform: rotate(-6deg);}
+  .tape:nth-child(16){ top: 75%; transform: rotate(9deg);}
+  .tape:nth-child(17){ top: 80%; transform: rotate(-8deg);}
+  .tape:nth-child(18){ top: 85%; transform: rotate(6deg);}
+  .tape:nth-child(19){ top: 90%; transform: rotate(-5deg);}
+  .tape:nth-child(20){ top: 95%; transform: rotate(7deg);}
   
