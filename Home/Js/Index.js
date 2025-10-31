@@ -152,3 +152,8 @@ function getRandomColor() {
   ];
   return colors[Math.floor(Math.random() * colors.length)];
 }
+
+function showMessage() {
+  alert("Сайт временно закрыт, у автора произошёл срыв, может будет открыт, а может и удалён вовсе.");
+  alert("Харо прости...");
+}
