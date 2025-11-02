@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=M+PLUS+1p&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Sono:wght@200..800&family=Unbounded:wght@200..900&display=swap');
 
 ::selection {
   border: 2px solid rgba(79, 79, 79, 0.101);
-  background-color: #353535;
+  background-color: #424242;
   color: #ffffff;
 }
 
 ::-moz-selection {
   border: 2px solid rgba(79, 79, 79, 0.101);
-  background-color: #353535;
+  background-color: #424242;
   color: #ffffff;
 }
 
@@ -21,9 +19,9 @@ a {
 
 body {
     margin: 0;
-    background: #171717;
+    background: #121212;
     color: #fff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Unbounded', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,10 +34,10 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 20px;
-    border: 4px dashed #ffbc2c;
+    border: 4px dashed #ff9e36;
     overflow: hidden;
     margin-bottom: 20px;
-    box-shadow: 0 0 100px #ffbc2c;
+    box-shadow: 0 0 500px #ff9e36;
     transition: 0.3s;
     position: relative;
     z-index: 2;
@@ -80,28 +78,37 @@ body {
   }
 
   h1 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 32px;
     font-weight: 700;
     text-align: center;
     margin: 10px 0;
+    color: #d3d3d3
   }
 
   .highlight {
-    background: #ffa72c;
-    padding: 4px 8px;
+    color: #ffffff;
+    background: #ff921e;
+    padding: 4px 4px;
+    border-radius: 10px;
   }
 
   .age {
-    font-size: 18px;
+    font-family: 'Sono', sans-serif;
+    color: #d3d3d3;
+    font-size: 20px;
     margin-bottom: 20px;
   }
 
   .desc {
-    max-width: 600px;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 800px;
+    font-weight: 400;
     text-align: center;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #ccc;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #858585;
     margin-bottom: 40px;
   }
 
@@ -112,42 +119,182 @@ body {
     justify-content: center;
   }
 
-  .button {
-    
-    background: #1f1f1f;
-    border: 1px solid #333;
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    transition: transform 0.7s ease, background 0.3s;
-    cursor: pointer;
+  .card {
+    margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    background: #1f1f1f;
+    border: 2px solid #333;
+    border-radius: 16px;
+    padding: 16px;
+    width: 300px;
+    gap: 16px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    background: #282828;
+    transform: translateY(2px);
+  }
+
+  .card a {
+    display: flex;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-icon {
+    margin-right: 15px;
+    width: 60px;
+    height: 60px;
+    background: #2c2c2c;
+    border-radius: 12px;
+    padding: 5px;
+    display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    flex-shrink: 0;
   }
   
-  .button:hover {
-    background: #2a2a2a;
-    transform: translateY(8px);
-  }
-  
-  .button-icon {
-    
-    font-size: 32px;
-    transition: 0.3s;
-  }
-  
-  .button h2 {
+  .card-text h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
   }
   
-  .button p {
-    font-size: 14px;
+  .card-text p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
     color: #aaa;
+    line-height: 1.4;
+  }
+  
+  .modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: #1f1f1f;
+    padding: 50px;
+    border-radius: 12px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .modal-icon {
+    width: 40px;
+    height: 40px;
+    background: #2c2c2c;
+    border-radius: 12px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .modal-title {
+    gap: 15px;
+    align-items: center;
+    display: flex;
+  }
+
+  .card-link {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    background: #1f1f1f;
+    border: 2px solid #333;
+    border-radius: 16px;
+    padding: 16px;
+    width: 300px;
+    gap: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .card-link a {
+    display: flex;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-link-icon {
+    margin-right: 15px;
+    width: 60px;
+    background: #2c2c2c;
+    border-radius: 12px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-link-text h3 {
     margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .card-link-text p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.4;
+  }
+  
+  .card-link.telegram:hover {
+    border-color: #00d5ff;
+    box-shadow: 0 0 12px rgba(31, 171, 241, 0.747);
+    transform: translateY(-2px);
+  }
+  
+  .card-link.discord:hover {
+    border-color: #5865f2;
+    box-shadow: 0 0 12px rgba(0, 119, 255, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .card-link.twitch:hover {
+    border-color: #67198e;
+    box-shadow: 0 0 12px rgba(142, 22, 255, 0.777);
+    transform: translateY(-2px);
+  }
+  
+  .card-link.twitch:hover .card-link-text h3 .twitch {
+      color: #c042ff;
+      transition: 0.5s ease;
+  }
+
+  .card-link.discord:hover .card-link-text h3 .discord {
+    color: #5865f2;
+    transition: 0.5s ease;
+  }
+
+  .card-link.telegram:hover .card-link-text h3 .telegram {
+    color: #42c3ff;
+    transition: 0.5s ease;
   }
 
   .tape-wrapper {
@@ -209,3 +356,59 @@ body {
   .tape:nth-child(19){ top: 90%; transform: rotate(-5deg);}
   .tape:nth-child(20){ top: 95%; transform: rotate(7deg);}
   
+@media (max-width: 900px) {
+  .desc {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .buttons {
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
+  .card-link {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    background: #1f1f1f;
+    border: 2px solid #333;
+    border-radius: 16px;
+    padding: 16px;
+    width: 270px;
+    gap: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  
+  .modal-content {
+    background: #1f1f1f;
+    padding: 30px;
+    width: 70%;
+    border-radius: 12px;
+    color: #fff;
+    text-align: center;
+  }
+
+
+  .button {
+    width: 85%;
+    padding: 15px;
+  }
+
+  .button p {
+    font-size: 12px;
+  }
+
+  .button-icon {
+    font-size: 24px;
+  }
+
+}
