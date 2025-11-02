@@ -153,6 +153,16 @@ function getRandomColor() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-function showMessage() {
-  alert("Сайт временно закрыт, может будет открыт, а может и удалён вовсе.");
-}
+const card = document.getElementById('contactCard');
+const modal = document.getElementById('modal');
+const closeBtn = document.querySelector('.close');
+
+card.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
