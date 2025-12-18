@@ -166,3 +166,35 @@ window.addEventListener('click', (e) => {
         modal.style.display = 'none';
     }
 });
+
+const colors = [
+  'rgb(255,107,107)',
+  'rgb(255,214,102)',
+  'rgb(107,203,119)',
+  'rgb(77,150,255)',
+  'rgb(157,78,221)'
+];
+
+const garland = document.querySelector('.garland');
+const count = Math.floor(window.innerWidth / 40);
+
+for (let i = 0; i < count; i++) {
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const size = 8 + Math.random() * 6;
+
+  const light = document.createElement('div');
+  light.className = 'light';
+  light.style.left = `${(i / count) * 100}%`;
+  light.style.width = `${size}px`;
+  light.style.height = `${size}px`;
+  light.style.backgroundColor = color;
+  light.style.boxShadow = `
+    ${color} 0 0 10px,
+    ${color} 0 0 20px,
+    ${color} 0 0 30px
+  `;
+  light.style.animationDuration = `${1.5 + Math.random() * 2}s`;
+  light.style.animationDelay = `${Math.random() * 2}s`;
+
+  garland.appendChild(light);
+}
