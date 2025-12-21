@@ -1,3 +1,19 @@
+/* ===================== ДАТЫ ===================== */
+
+function isNewYearPeriod() {
+  const now = new Date();
+  const year = now.getFullYear();
+
+  const start = new Date(year, 11, 20); // 20 декабря
+  const end = new Date(year + 1, 0, 10); // 10 января
+
+  return now >= start || now <= end;
+}
+
+const isNY = isNewYearPeriod();
+
+/* ===================== ВОЗРАСТ ===================== */
+
 function calculateAge(birthDate) {
   const now = new Date();
   const diff = now - birthDate;
@@ -7,36 +23,6 @@ function calculateAge(birthDate) {
 
 const birthDate = new Date(2008, 6, 19);
 const ageElement = document.querySelector('.age');
-const now = new Date();
-
-const birthdayStart = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate(), 0, 0, 0);
-const birthdayEnd = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate() + 1, 0, 0, 0);
-const isBirthday = now >= birthdayStart && now < birthdayEnd;
-
-if (isBirthday) {
-  const birthdayMessage = document.createElement('div');
-  birthdayMessage.textContent = 'С днём рождения 🎉';
-  birthdayMessage.style.position = 'fixed';
-  birthdayMessage.style.top = '20px';
-  birthdayMessage.style.left = '50%';
-  birthdayMessage.style.transform = 'translateX(-50%)';
-  birthdayMessage.style.padding = '10px 20px';
-  birthdayMessage.style.borderRadius = '12px';
-  birthdayMessage.style.fontSize = '24px';
-  birthdayMessage.style.fontWeight = 'bold';
-  birthdayMessage.style.zIndex = '9999';
-  birthdayMessage.style.color = '#fff';
-  birthdayMessage.style.animation = 'pulse 2s infinite ease-in-out';
-  document.body.appendChild(birthdayMessage);
-
-  launchConfetti(true);
-
-  setInterval(() => {
-    launchConfetti(true);
-  }, 10000);
-}
-
-let showingTime = false;
 
 function updateAgeText() {
   ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
@@ -44,157 +30,174 @@ function updateAgeText() {
 
 updateAgeText();
 
+/* ===================== ВРЕМЯ ===================== */
+
+let showingTime = false;
+
 function updateTimeText() {
   const now = new Date();
-  const mskTime = new Date(now.getTime() + 3*60*60*1000);
-  let hours = mskTime.getUTCHours();
-  const minutes = String(mskTime.getUTCMinutes()).padStart(2, '0');
-  const seconds = String(mskTime.getUTCSeconds()).padStart(2, '0');
-  const ampm = hours >= 12 ? 'pm' : 'am';
-  hours = hours % 12 || 12;
-  ageElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
-}
+  const msk = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+  let h = msk.getUTCHours();
+  const m = String(msk.getUTCMinutes()).padStart(2, '0');
+  const s = String(msk.getUTCSeconds()).padStart(2, '0');
+  const ampm = h >= 12 ? 'pm' : 'am';
+  h = h % 12 || 12;
 
-updateAgeText();
+  ageElement.textContent = `${h}:${m}:${s} ${ampm}`;
+}
 
 ageElement.addEventListener('click', () => {
   showingTime = !showingTime;
+
   if (showingTime) {
     updateTimeText();
-    ageElement.timeInterval = setInterval(updateTimeText, 1000);
+    ageElement._interval = setInterval(updateTimeText, 1000);
   } else {
-    clearInterval(ageElement.timeInterval);
+    clearInterval(ageElement._interval);
     updateAgeText();
   }
 });
+
+/* ===================== ДР ===================== */
+
+const now = new Date();
+const birthdayStart = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+const birthdayEnd = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate() + 1);
+const isBirthday = now >= birthdayStart && now < birthdayEnd;
+
+if (isBirthday) {
+  const msg = document.createElement('div');
+  msg.textContent = 'С днём рождения';
+  Object.assign(msg.style, {
+    position: 'fixed',
+    top: '20px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    padding: '10px 20px',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    zIndex: 9999,
+    color: '#fff'
+  });
+  document.body.appendChild(msg);
+
+  launchParticles(true);
+  setInterval(() => launchParticles(true), 10000);
+}
+
+/* ===================== АВАТАР ===================== */
 
 let clickCount = 0;
 let hideTimeout;
 const avatar = document.querySelector('.avatar');
 
-const counterEl = document.createElement('div');
-counterEl.className = 'click-counter';
-document.body.appendChild(counterEl);
-counterEl.style.opacity = '0';
+const counter = document.createElement('div');
+counter.className = 'click-counter';
+counter.style.opacity = '0';
+document.body.appendChild(counter);
 
 avatar.addEventListener('click', () => {
   clickCount++;
-  counterEl.style.transition = 'opacity 0.5s ease';
-  counterEl.style.opacity = '1';
-  counterEl.textContent = `${clickCount} / 10`;
+  counter.style.opacity = '1';
+  counter.textContent = `${clickCount} / 10`;
 
   if (clickCount === 10) {
-    launchConfetti();
+    launchParticles();
     clickCount = 0;
-    counterEl.textContent = `0 / 10`;
-
-    setTimeout(() => {
-      counterEl.style.opacity = '0';
-    }, 1500);
   }
 
   clearTimeout(hideTimeout);
-
-  hideTimeout = setTimeout(() => {
-    counterEl.style.opacity = '0';
-  }, 5000);
+  hideTimeout = setTimeout(() => counter.style.opacity = '0', 5000);
 });
 
+/* ===================== ЧАСТИЦЫ ===================== */
+
+function launchParticles(fromTop = false) {
+  if (isNY) launchSnow(fromTop);
+  else launchConfetti(fromTop);
+}
+
+/* ===================== КОНФЕТТИ ===================== */
+
 function launchConfetti(fromTop = false) {
-  const confettiContainer = document.createElement('div');
-  confettiContainer.className = 'confetti';
-  document.body.appendChild(confettiContainer);
+  const c = document.createElement('div');
+  document.body.appendChild(c);
 
   for (let i = 0; i < 150; i++) {
-    const confetti = document.createElement('div');
+    const e = document.createElement('div');
     const size = Math.random() * 8 + 4;
-    const shape = Math.random() > 0.5 ? 'circle' : 'stripe';
 
-    confetti.style.position = 'absolute';
-    confetti.style.width = shape === 'circle' ? `${size}px` : `${size * 2}px`;
-    confetti.style.height = shape === 'circle' ? `${size}px` : `${size / 2}px`;
-    confetti.style.backgroundColor = getRandomColor();
-    confetti.style.opacity = 1;
-    confetti.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+    e.style.position = 'absolute';
+    e.style.width = `${size}px`;
+    e.style.height = `${size}px`;
+    e.style.background = getRandomColor();
+    e.style.left = `${Math.random() * innerWidth}px`;
+    e.style.top = fromTop ? '-10px' : `${Math.random() * innerHeight}px`;
 
-    if (fromTop) {
-      confetti.style.top = `-10px`;
-      confetti.style.left = `${Math.random() * window.innerWidth}px`;
-    } else {
-      confetti.style.top = `${Math.random() * window.innerHeight}px`;
-      confetti.style.left = `${Math.random() * window.innerWidth}px`;
-    }
-
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-    confettiContainer.appendChild(confetti);
-
-    const duration = 3000 + Math.random() * 2500;
-    const rotate = 360 + Math.random() * 720;
-    const xDrift = (Math.random() - 0.5) * 200;
+    c.appendChild(e);
 
     setTimeout(() => {
-      confetti.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
-      confetti.style.transform += ` translate(${xDrift}px, ${window.innerHeight + 100}px) rotate(${rotate}deg)`;
-      confetti.style.opacity = 0;
+      e.style.transition = 'transform 4s linear, opacity 4s linear';
+      e.style.transform = `translateY(${innerHeight + 200}px)`;
+      e.style.opacity = 0;
     }, 50);
   }
 
-  setTimeout(() => {
-    confettiContainer.remove();
-  }, 6000);
+  setTimeout(() => c.remove(), 6000);
 }
 
+/* ===================== СНЕГ ===================== */
+
+function launchSnow(fromTop = false) {
+  const c = document.createElement('div');
+  document.body.appendChild(c);
+
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    const size = Math.random() * 6 + 4;
+
+    s.style.position = 'absolute';
+    s.style.width = `${size}px`;
+    s.style.height = `${size}px`;
+    s.style.borderRadius = '50%';
+    s.style.background = '#fff';
+    s.style.left = `${Math.random() * innerWidth}px`;
+    s.style.top = fromTop ? '-10px' : `${Math.random() * innerHeight}px`;
+
+    c.appendChild(s);
+
+    setTimeout(() => {
+      s.style.transition = 'transform 6s linear, opacity 6s linear';
+      s.style.transform = `translateY(${innerHeight + 100}px)`;
+      s.style.opacity = 0;
+    }, 50);
+  }
+
+  setTimeout(() => c.remove(), 9000);
+}
+
+/* ===================== ЦВЕТА ===================== */
+
 function getRandomColor() {
-  const colors = [
-    '#ff2c9c', '#ff6f61', '#ffaa00', '#3cffa7', '#2cfaff', '#fffb3c', '#ffffff',
-    '#00c3ff', '#8aff00', '#ff3c3c', '#b300ff', '#ff8ecb', '#00ffd0', '#ffb347',
-    '#c1ff72', '#72b2ff', '#ff6767', '#ffe066', '#fdff8f', '#e3e3e3'
-  ];
+  const colors = ['#ff2c9c', '#ffaa00', '#3cffa7', '#2cfaff', '#ffffff'];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-const card = document.getElementById('contactCard');
-const modal = document.getElementById('modal');
-const closeBtn = document.querySelector('.close');
+/* ===================== ГИРЛЯНДА ===================== */
 
-card.addEventListener('click', () => {
-    modal.style.display = 'flex';
-});
+if (isNY) {
+  const garland = document.querySelector('.garland');
+  if (garland) {
+    const colors = ['red', 'yellow', 'green', 'blue', 'purple'];
+    const count = Math.floor(innerWidth / 40);
 
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    for (let i = 0; i < count; i++) {
+      const l = document.createElement('div');
+      l.className = 'light';
+      l.style.left = `${(i / count) * 100}%`;
+      l.style.background = colors[Math.floor(Math.random() * colors.length)];
+      l.style.animationDuration = `${1 + Math.random() * 2}s`;
+      garland.appendChild(l);
     }
-});
-
-const colors = [
-  'rgb(255,107,107)',
-  'rgb(255,214,102)',
-  'rgb(107,203,119)',
-  'rgb(77,150,255)',
-  'rgb(157,78,221)'
-];
-
-const garland = document.querySelector('.garland');
-const count = Math.floor(window.innerWidth / 40);
-
-for (let i = 0; i < count; i++) {
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  const size = 8 + Math.random() * 6;
-
-  const light = document.createElement('div');
-  light.className = 'light';
-  light.style.left = `${(i / count) * 100}%`;
-  light.style.width = `${size}px`;
-  light.style.height = `${size}px`;
-  light.style.backgroundColor = color;
-  light.style.boxShadow = `
-    ${color} 0 0 10px,
-    ${color} 0 0 20px,
-    ${color} 0 0 30px
-  `;
-  light.style.animationDuration = `${1.5 + Math.random() * 2}s`;
-  light.style.animationDelay = `${Math.random() * 2}s`;
-
-  garland.appendChild(light);
+  }
 }
