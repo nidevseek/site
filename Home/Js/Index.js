@@ -4,15 +4,13 @@ function calculateAge(birthDate) {
   const ageInYears = diff / (1000 * 60 * 60 * 24 * 365.2425);
   return ageInYears.toFixed(1);
 }
-
 const birthDate = new Date(2008, 6, 19);
 const ageElement = document.querySelector('.age');
 const now = new Date();
-
 const birthdayStart = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate(), 0, 0, 0);
 const birthdayEnd = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate() + 1, 0, 0, 0);
 const isBirthday = now >= birthdayStart && now < birthdayEnd;
-
+const isNewYearPeriod = (now.getMonth() === 11 && now.getDate() >= 20) || (now.getMonth() === 0 && now.getDate() <= 10);
 if (isBirthday) {
   const birthdayMessage = document.createElement('div');
   birthdayMessage.textContent = 'С днём рождения 🎉';
@@ -28,22 +26,16 @@ if (isBirthday) {
   birthdayMessage.style.color = '#fff';
   birthdayMessage.style.animation = 'pulse 2s infinite ease-in-out';
   document.body.appendChild(birthdayMessage);
-
   launchConfetti(true);
-
   setInterval(() => {
     launchConfetti(true);
   }, 10000);
 }
-
 let showingTime = false;
-
 function updateAgeText() {
   ageElement.textContent = `Мне ${calculateAge(birthDate)} лет`;
 }
-
 updateAgeText();
-
 function updateTimeText() {
   const now = new Date();
   const mskTime = new Date(now.getTime() + 3*60*60*1000);
@@ -54,9 +46,7 @@ function updateTimeText() {
   hours = hours % 12 || 12;
   ageElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
 }
-
 updateAgeText();
-
 ageElement.addEventListener('click', () => {
   showingTime = !showingTime;
   if (showingTime) {
@@ -67,83 +57,96 @@ ageElement.addEventListener('click', () => {
     updateAgeText();
   }
 });
-
 let clickCount = 0;
 let hideTimeout;
 const avatar = document.querySelector('.avatar');
-
 const counterEl = document.createElement('div');
 counterEl.className = 'click-counter';
 document.body.appendChild(counterEl);
 counterEl.style.opacity = '0';
-
 avatar.addEventListener('click', () => {
   clickCount++;
   counterEl.style.transition = 'opacity 0.5s ease';
   counterEl.style.opacity = '1';
   counterEl.textContent = `${clickCount} / 10`;
-
   if (clickCount === 10) {
     launchConfetti();
     clickCount = 0;
     counterEl.textContent = `0 / 10`;
-
     setTimeout(() => {
       counterEl.style.opacity = '0';
     }, 1500);
   }
-
   clearTimeout(hideTimeout);
-
   hideTimeout = setTimeout(() => {
     counterEl.style.opacity = '0';
   }, 5000);
 });
-
 function launchConfetti(fromTop = false) {
-  const confettiContainer = document.createElement('div');
-  confettiContainer.className = 'confetti';
-  document.body.appendChild(confettiContainer);
-
-  for (let i = 0; i < 150; i++) {
-    const confetti = document.createElement('div');
-    const size = Math.random() * 8 + 4;
-    const shape = Math.random() > 0.5 ? 'circle' : 'stripe';
-
-    confetti.style.position = 'absolute';
-    confetti.style.width = shape === 'circle' ? `${size}px` : `${size * 2}px`;
-    confetti.style.height = shape === 'circle' ? `${size}px` : `${size / 2}px`;
-    confetti.style.backgroundColor = getRandomColor();
-    confetti.style.opacity = 1;
-    confetti.style.borderRadius = shape === 'circle' ? '50%' : '2px';
-
-    if (fromTop) {
-      confetti.style.top = `-10px`;
-      confetti.style.left = `${Math.random() * window.innerWidth}px`;
-    } else {
-      confetti.style.top = `${Math.random() * window.innerHeight}px`;
-      confetti.style.left = `${Math.random() * window.innerWidth}px`;
+  const container = document.createElement('div');
+  if (isNewYearPeriod) {
+    container.className = 'snow';
+    for (let i = 0; i < 150; i++) {
+      const snowflake = document.createElement('div');
+      const size = Math.random() * 6 + 2;
+      snowflake.style.position = 'absolute';
+      snowflake.style.width = `${size}px`;
+      snowflake.style.height = `${size}px`;
+      snowflake.style.backgroundColor = ['#ffffff', '#f0f8ff', '#e0f7fa'][Math.floor(Math.random() * 3)];
+      snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+      snowflake.style.borderRadius = '50%';
+      snowflake.style.top = `-10px`; // Always from top for snow
+      snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+      snowflake.style.transform = `rotate(${Math.random() * 360}deg)`;
+      container.appendChild(snowflake);
+      const duration = 10000 + Math.random() * 5000;
+      const rotate = Math.random() * 360;
+      const xDrift = (Math.random() - 0.5) * 100;
+      setTimeout(() => {
+        snowflake.style.transition = `transform ${duration}ms linear, opacity ${duration}ms ease-out`;
+        snowflake.style.transform += ` translate(${xDrift}px, ${window.innerHeight + 100}px) rotate(${rotate}deg)`;
+        snowflake.style.opacity = 0;
+      }, 50);
     }
-
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-    confettiContainer.appendChild(confetti);
-
-    const duration = 3000 + Math.random() * 2500;
-    const rotate = 360 + Math.random() * 720;
-    const xDrift = (Math.random() - 0.5) * 200;
-
     setTimeout(() => {
-      confetti.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
-      confetti.style.transform += ` translate(${xDrift}px, ${window.innerHeight + 100}px) rotate(${rotate}deg)`;
-      confetti.style.opacity = 0;
-    }, 50);
+      container.remove();
+    }, 16000);
+  } else {
+    container.className = 'confetti';
+    for (let i = 0; i < 150; i++) {
+      const confetti = document.createElement('div');
+      const size = Math.random() * 8 + 4;
+      const shape = Math.random() > 0.5 ? 'circle' : 'stripe';
+      confetti.style.position = 'absolute';
+      confetti.style.width = shape === 'circle' ? `${size}px` : `${size * 2}px`;
+      confetti.style.height = shape === 'circle' ? `${size}px` : `${size / 2}px`;
+      confetti.style.backgroundColor = getRandomColor();
+      confetti.style.opacity = 1;
+      confetti.style.borderRadius = shape === 'circle' ? '50%' : '2px';
+      if (fromTop) {
+        confetti.style.top = `-10px`;
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+      } else {
+        confetti.style.top = `${Math.random() * window.innerHeight}px`;
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+      }
+      confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+      container.appendChild(confetti);
+      const duration = 3000 + Math.random() * 2500;
+      const rotate = 360 + Math.random() * 720;
+      const xDrift = (Math.random() - 0.5) * 200;
+      setTimeout(() => {
+        confetti.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+        confetti.style.transform += ` translate(${xDrift}px, ${window.innerHeight + 100}px) rotate(${rotate}deg)`;
+        confetti.style.opacity = 0;
+      }, 50);
+    }
+    setTimeout(() => {
+      container.remove();
+    }, 6000);
   }
-
-  setTimeout(() => {
-    confettiContainer.remove();
-  }, 6000);
+  document.body.appendChild(container);
 }
-
 function getRandomColor() {
   const colors = [
     '#ff2c9c', '#ff6f61', '#ffaa00', '#3cffa7', '#2cfaff', '#fffb3c', '#ffffff',
@@ -152,21 +155,17 @@ function getRandomColor() {
   ];
   return colors[Math.floor(Math.random() * colors.length)];
 }
-
 const card = document.getElementById('contactCard');
 const modal = document.getElementById('modal');
 const closeBtn = document.querySelector('.close');
-
 card.addEventListener('click', () => {
     modal.style.display = 'flex';
 });
-
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = 'none';
     }
 });
-
 const colors = [
   'rgb(255,107,107)',
   'rgb(255,214,102)',
@@ -174,14 +173,11 @@ const colors = [
   'rgb(77,150,255)',
   'rgb(157,78,221)'
 ];
-
 const garland = document.querySelector('.garland');
 const count = Math.floor(window.innerWidth / 40);
-
 for (let i = 0; i < count; i++) {
   const color = colors[Math.floor(Math.random() * colors.length)];
   const size = 8 + Math.random() * 6;
-
   const light = document.createElement('div');
   light.className = 'light';
   light.style.left = `${(i / count) * 100}%`;
@@ -195,6 +191,11 @@ for (let i = 0; i < count; i++) {
   `;
   light.style.animationDuration = `${1.5 + Math.random() * 2}s`;
   light.style.animationDelay = `${Math.random() * 2}s`;
-
   garland.appendChild(light);
+}
+if (isNewYearPeriod) {
+  launchConfetti(true);
+  setInterval(() => {
+    launchConfetti(true);
+  }, 3000);
 }
